@@ -74,7 +74,7 @@ RUN git clone https://github.com/zeromq/libzmq.git && \
     cd build && \
     cmake \
         -DWITH_PERF_TOOL=OFF \
-        -DZMQ_BUILD_TESTS=ON \
+        -DZMQ_BUILD_TESTS=OFF \
         -DENABLE_CPACK=OFF \
         -DCMAKE_C_FLAGS="-fPIC" \
         -DCMAKE_CXX_FLAGS="-fPIC" \
