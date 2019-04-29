@@ -1,0 +1,26 @@
+sudo: required
+services:
+- docker
+env:
+  global:
+  - DOCKER_USERNAME=guillaumejacquenot
+  - secure: "bGTJTkrykTzfiuyBHzKunON7BZzzy4NVlGtqFDqqWBeFS02KquNTu5YlH9h7mJ+st0uB5/J8WJLOrlSBuRpB54iTQNPLyc83KVEO3E6pikEmsjq4CkVrUSu7zlIrhsIcaw3hd5++XE51ZJKZwc3lHgK3cvoF4Y1pZB6mdqMS1B0r2j2ygOy94yRs8SW39AR+nFwSypqXOzJTix89u7dGU5gRxQeV9acp0mm9onrLWzDREWUOAvi+WmvfQZ3Dmn0Sm+ZogvdZCshTYnLk8G+g5Rir3ycz1nxeTdXBqXW2U82oHxfyCqmjiyJT1N3BPtnAGPJAF1+ZLAqtQq56b03iHcM+8HPSlgac4i6yFNIaiRFuQtkrhwUv1zpFFbWwlF6ALrosnt+zM8V4yz1467T6Q7JCMkEXMrJQM94PSCoaMME3HLwyDKg6dkxt1ZYPr7o3gm7c1ofl8EYndOds3H8xU+KLN45rQVUqJ6xL6WBeDL8pSal2Ofb5mkfeTleJ48aolLqOg0x+mJAlAiGZNIjcOYPo1YrEPXoxDvsVJ+O5s/Av66GrC43C/WkGVEoyuP7v5L/UL7Nqf2zWq4pD7cF7kLI03JGzyYl4ARXRrkob3dgGbQXuu7I209upu4l/yGwQUDbHPbAg7rxZ7EJ9UgJhJPb+4PoAWi12O4fXZlMr5Dw="
+
+before_install:
+- echo "Before install"
+
+before_script:
+- docker pull sirehna/base-image-debian9-gcc820-xdyn || true
+
+script:
+- docker build --pull --cache-from sirehna/base-image-debian9-gcc820-xdyn --tag sirehna/base-image-debian9-gcc820-xdyn .
+
+after_script:
+- docker images
+
+after_success:
+- if [[ "$TRAVIS_BRANCH" == "master" ]]; then docker login -u $DOCKER_USERNAME -p
+  $DOCKER_PASSWORD ; docker push sirehna/base-image-debian9-gcc820-xdyn ; fi
+
+notifications:
+  email: true
