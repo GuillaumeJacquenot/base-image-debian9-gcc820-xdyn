@@ -1,4 +1,4 @@
-# sirehna/base-image-debian9-gcc820-xdyn-xdyn
+# sirehna/base-image-debian9-gcc820-xdyn
 
 [![Build Status](https://travis-ci.org/sirehna/base-image-debian9-gcc820-xdyn.svg?branch=master)](https://travis-ci.org/sirehna/base-image-debian9-gcc820-xdyn)
 [![](https://images.microbadger.com/badges/image/sirehna/base-image-debian9-gcc820-xdyn.svg)](https://microbadger.com/images/sirehna/base-image-debian9-gcc820-xdyn)
