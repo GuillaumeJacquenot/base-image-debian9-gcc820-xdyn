@@ -99,13 +99,14 @@ RUN git clone https://github.com/zeromq/cppzmq.git && \
     git checkout v4.2.2 && \
     mkdir build && \
     cd build && \
-    cmake .. && \
-        -DCMAKE_C_FLAGS="-fPIC" && \
-        -DCMAKE_CXX_FLAGS="-fPIC" && \
+    cmake \
+        -DCMAKE_C_FLAGS="-fPIC" \
+        -DCMAKE_CXX_FLAGS="-fPIC" \
+        .. \
+    && \
     make install && \
     cd .. && \
     rm -rf cppzmq
-
 
 RUN wget https://github.com/sirehna/ssc/releases/download/v8.0.1/ssc_binary_debian9_amd64.deb -O ssc.deb && \
     dpkg -r ssc && \
