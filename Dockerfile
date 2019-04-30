@@ -60,8 +60,7 @@ RUN git clone https://github.com/google/protobuf.git && \
     git checkout 3.0.x && \
     ./autogen.sh && \
     ./configure "CFLAGS=-fPIC" "CXXFLAGS=-fPIC" && \
-    make  && \
-    make check && \
+    make && \
     make install && \
     ldconfig && \
     cd .. && \
@@ -91,7 +90,6 @@ RUN git clone https://github.com/zeromq/libzmq.git && \
     echo "  add_library(libzmq-static STATIC IMPORTED)" >> ZeroMQConfig.cmake && \
     echo "  set_target_properties(libzmq-static PROPERTIES IMPORTED_LOCATION \${\${PN}_STATIC_LIBRARY})" >> ZeroMQConfig.cmake && \
     echo "endif(NOT TARGET libzmq-static)" >> ZeroMQConfig.cmake && \
-    make && \
     make install && \
     ldconfig && \
     rm -rf libzmq
