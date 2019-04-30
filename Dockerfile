@@ -91,7 +91,7 @@ RUN git clone https://github.com/zeromq/libzmq.git && \
     echo "  add_library(libzmq-static STATIC IMPORTED)" >> ZeroMQConfig.cmake && \
     echo "  set_target_properties(libzmq-static PROPERTIES IMPORTED_LOCATION \${\${PN}_STATIC_LIBRARY})" >> ZeroMQConfig.cmake && \
     echo "endif(NOT TARGET libzmq-static)" >> ZeroMQConfig.cmake && \
-    make test && \
+    make && \
     make install && \
     ldconfig && \
     rm -rf libzmq
