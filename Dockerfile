@@ -111,6 +111,7 @@ RUN git clone https://github.com/zeromq/cppzmq.git && \
 RUN cd /opt && \
     git clone https://github.com/garrison/eigen3-hdf5
 
-RUN wget https://github.com/sirehna/ssc/releases/download/v8.0.1/ssc_binary_debian9_amd64.deb -O ssc.deb && \
+RUN wget https://github.com/sirehna/ssc/releases/download/v8.0.2/ssc_binary_debian9_gcc8_amd64.deb -O ssc.deb && \
     dpkg -r ssc || true && \
-    dpkg -i ssc.deb
+    dpkg -i ssc.deb && \
+    rm ssc.deb
