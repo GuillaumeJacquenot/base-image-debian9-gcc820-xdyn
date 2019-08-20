@@ -1,6 +1,7 @@
 FROM sirehna/base-image-debian9-gcc820:latest
 
-RUN apt-get update -yq && \
+RUN echo "deb http://deb.debian.org/debian stretch-backports main" >> /etc/apt/sources.list && \
+    apt-get update -yq && \
     apt-get install --no-install-recommends -y \
         cmake \
         make \
@@ -25,6 +26,16 @@ RUN apt-get update -yq && \
         libtool \
         curl \
         unzip \
+        libc-ares-dev \
+        libssl-dev  && \    
+    apt-get -t stretch-backports install --yes --no-install-recommends \
+        libgrpc++-dev \
+        libgrpc++1 \
+        libgrpc-dev \
+        libgrpc6 \
+        libprotobuf-dev \
+        libprotoc-dev \
+        protobuf-compiler-grpc \
      && \
      apt-get clean && \
      rm -rf /tmp/* /var/tmp/* && \
